@@ -60,7 +60,7 @@
 			</td>
 			<td>
 				<span class="label label-important" ng-show="hoursNeeded(issue)" title="{{hoursNeeded(issue)}}">NEEDS HOURS</span>
-				<span ng-show="!hoursNeeded(issue)">{{secondsToHours(issue.fields.timespent)}}</span>
+				<span ng-show="!hoursNeeded(issue)">{{secondsToTime(issue.fields.timespent)}}</span>
 			</td>
 			<td>
 				<span class="label label-warning" ng-show="!categorized(issue)">UNCATEGORIZED</span>

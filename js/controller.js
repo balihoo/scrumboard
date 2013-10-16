@@ -247,7 +247,7 @@ app.controller('boardController', function($scope, $route, $http, $location) {
 		if(issue.fields.customfield_10031 && !issue.fields.timespent) {
 			return "Work for "+issue.fields.customfield_10031.value;
 		}
-		if(!issue.fields.customfield_10020) {
+		if(!issue.fields.customfield_10020 && !issue.fields.timespent) {
 			return "No points";
 		}
 
@@ -262,9 +262,20 @@ app.controller('boardController', function($scope, $route, $http, $location) {
 		return false;
 	};
 
-	$scope.secondsToHours = function(seconds) {
-		hours = seconds / 60.0 / 60.0;
-		return hours == 0 ? "" : hours;
+	$scope.secondsToTime = function(seconds) {
+		hours = Math.floor(seconds / 3600);
+		var eseconds = seconds % 3600;
+		mins = eseconds / 60;
+		ret = "";
+		if(hours) {
+			ret += hours + "h";
+		}
+
+		if(mins) {
+			ret += mins + "m";
+		}
+
+		return ret;
 	}
 
 
